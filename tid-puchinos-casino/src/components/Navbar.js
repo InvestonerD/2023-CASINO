@@ -3,23 +3,29 @@ import "../styles/navbar.css";
 import chat from "../images/icons/chat.svg";
 import user from "../images/icons/user.svg";
 import cross from "../images/icons/cross.svg";
+import sol from "../images/design/sol.png";
+import deposit from "../images/icons/deposit.svg";
 import { AuthWrapper } from '../context/AuthContext.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import '@solana/wallet-adapter-react-ui/styles.css';
 import 'animate.css';
+
+import io from "socket.io-client";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const Navbar = () => {
 
+    const socket = io("http://localhost:4000/");
+
     const { publicKey } = useWallet();
 
-    const [ isConnected, setIsConnected ] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
 
-    const [ isOpen, setIsOpen ] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    const [ isUserOpen, setIsUserOpen ] = useState(false);
+    const [isUserOpen, setIsUserOpen] = useState(false);
 
     const handleChatClick = () => {
 
@@ -46,16 +52,20 @@ export const Navbar = () => {
     }
 
     const handleUserClick = () => {
-        setIsUserOpen(!isUserOpen)
+        setIsUserOpen(+!isUserOpen)
     }
 
     useEffect(() => {
+
         if (publicKey) {
             setIsConnected(true);
+
         } else {
             setIsConnected(false);
         }
-    }, [publicKey]);
+
+    }, [publicKey, socket]);
+
 
     return (
         <div className="navbar">
@@ -75,9 +85,24 @@ export const Navbar = () => {
             </div>
 
             <div className="right-row">
+
+                <div className={isConnected ? "user-balance connected" : "user-balance"} >
+
+                    <img src={sol} alt="sol" className="sol-logo" />
+
+                    <p className="balance">0.00</p>
+
+                    <div className="deposit-icon" >
+
+                        <img src={deposit} alt="deposit" className="deposit" />
+
+                    </div>
+
+                </div>
+
                 <AuthWrapper />
-                <div className={isConnected ? "icon-container connected" : "icon-container"}>
-                    <img src={user} alt="chat-icon" onClick={handleUserClick} />
+                <div className={isConnected ? "icon-container connected" : "icon-container"} onClick={handleUserClick}>
+                    <img src={user} alt="chat-icon" />
                 </div>
                 <div className={isOpen ? "icon-container open" : "icon-container"} onClick={handleChatClick}>
                     <img src={chat} alt="chat-icon" />
@@ -114,3 +139,7 @@ export const Navbar = () => {
         </div>
     );
 };
+
+
+
+

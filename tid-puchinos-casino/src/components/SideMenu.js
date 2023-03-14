@@ -53,7 +53,7 @@ export const SideMenu = () => {
 
                 <div className="title">
 
-                    <p className="animate__animated animate__fadeIn">TID CASINO</p>
+                    <p className="animate__animated animate__fadeIn" onClick={() => window.location.reload}>TID CASINO</p>
 
                 </div>
 

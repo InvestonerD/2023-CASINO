@@ -1,12 +1,12 @@
 import React from 'react';
 import { SideMenu } from '../components/SideMenu.js'
 import { Navbar } from '../components/Navbar.js'
-import { BigWins } from '../components/BigWins.js';
+import { SideChat } from '../components/SideChat.js';
 import { Footer } from '../components/Footer.js';
+import { BigWins } from '../components/BigWins.js';
 import '../styles/global.css'
 import '../styles/home.css'
-import SideChat from '../components/SideChat.js';
-// import  SendBlazed  from '../extras/sendBlazed.js';
+import  SendBlazed  from '../extras/sendBlazed.js';
 
 import left_arrow from '../images/icons/left-arrow.svg'
 import right_arrow from '../images/icons/right-arrow.svg'
@@ -40,7 +40,7 @@ function Home() {
 
     return (
         <div className='App'>
-            <title>Home</title>
+            <title>TID Home</title>
 
             <SideMenu />
 
@@ -94,6 +94,8 @@ function Home() {
                     </div>
 
                     <BigWins />
+
+                    <SendBlazed />
 
                 </div>
 

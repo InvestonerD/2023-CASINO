@@ -11,7 +11,7 @@ import command from "../images/icons/command.svg";
 import tips from "../images/icons/tips.svg";
 import gifs from "../images/icons/gif.svg";
 
-const SideChat = () => {
+export const SideChat = () => {
     const [showPicker, setShowPicker] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [buttonDisplay, setButtonDisplay] = useState("none");
@@ -104,5 +104,3 @@ const SideChat = () => {
     );
 
 };
-
-export default SideChat;
