@@ -37,30 +37,30 @@ function Crash() {
         crashBets.style.scrollBehavior = 'smooth';
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        setTimeout(() => {
+    //     setTimeout(() => {
 
-            const totalBets = document.querySelectorAll('.user-bet');
-            let totalBetAmount = 0;
+    //         const totalBets = document.querySelectorAll('.user-bet');
+    //         let totalBetAmount = 0;
 
-            totalBets.forEach((bet) => {
-                const betAmount = bet.innerHTML.replace('$', '').replace(/,/g, '');
-                totalBetAmount += parseFloat(betAmount);
-            });
+    //         totalBets.forEach((bet) => {
+    //             const betAmount = bet.innerHTML.replace('$', '').replace(/,/g, '');
+    //             totalBetAmount += parseFloat(betAmount);
+    //         });
 
-            const totalBetAmountShow = document.querySelector('.user-bet-amount-total');
+    //         const totalBetAmountShow = document.querySelector('.user-bet-amount-total');
 
-            totalBetAmountShow.innerHTML = totalBetAmount.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
+    //         totalBetAmountShow.innerHTML = totalBetAmount.toLocaleString('en-US', {
+    //             style: 'currency',
+    //             currency: 'USD',
+    //         });
 
-            setTotalBets(totalBetAmount);
+    //         setTotalBets(totalBetAmount);
 
-        }, 1000);
+    //     }, 1000);
 
-    }, []);
+    // }, []);
 
     socket.on('update-counter', (data) => {
 
@@ -117,7 +117,6 @@ function Crash() {
     });
 
     socket.on('round', (data) => {
-        console.log(data.crashes);
 
         let parent_container = document.querySelector('.recent-crashes');
 
