@@ -15,7 +15,7 @@ import avatar from "../images/design/avatar.png";
 import io from "socket.io-client";
 import { toast } from "react-toastify";
 
-const socket = io("timd-puchinos-casino.fly.dev");
+const socket = io("casino-server.fly.dev");
 
 socket.on("all-chat-messages", (data) => {
 
