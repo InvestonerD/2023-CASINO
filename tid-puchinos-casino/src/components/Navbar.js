@@ -27,7 +27,7 @@ import io from "socket.io-client";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const socket = io("timd-puchinos-casino.fly.dev:8080");
+const socket = io("timd-puchinos-casino.fly.dev");
 
 socket.on("user-data", (data) => {
 
