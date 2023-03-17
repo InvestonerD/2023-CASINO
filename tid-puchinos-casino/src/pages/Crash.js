@@ -15,7 +15,7 @@ import io from 'socket.io-client';
 import { toast } from "react-toastify";
 
 
-const crash = io('http://localhost:4000/crash');
+const crash = io('timd-puchinos-casino.fly.dev:8080/crash');
 
 crash.on('connect', () => {
 
