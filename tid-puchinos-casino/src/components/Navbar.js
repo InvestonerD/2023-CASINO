@@ -33,7 +33,7 @@ socket.on("user-data", (data) => {
 
     let balance = document.querySelector(".balance");
 
-    balance.innerHTML = parseInt(data.balance).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
     let username = document.getElementById("username");
     username.innerHTML = data.username;
@@ -133,6 +133,26 @@ export const Navbar = () => {
 
     }
 
+    const handleDepositClick = () => {
+
+        document.querySelector('.user-deposit').classList.toggle('closed');
+
+        document.querySelector('.user-profile').classList.toggle('close');
+
+        document.querySelector('.user-profile-card').classList.toggle('open');
+
+    }
+
+    const handleDepositClickBack = () => {
+
+        document.querySelector('.user-deposit').classList.toggle('closed');
+
+        document.querySelector('.user-profile').classList.toggle('close');
+
+        document.querySelector('.user-profile-card').classList.toggle('open');
+
+    }
+
     useEffect(() => {
 
         if (publicKey) {
@@ -160,7 +180,7 @@ export const Navbar = () => {
 
                     <div className="deposit-icon" >
 
-                        <img src={deposit} alt="deposit" className="deposit" />
+                        <img src={deposit} alt="deposit" className="deposit" onClick={handleDepositClick} />
 
                     </div>
 
@@ -375,12 +395,88 @@ export const Navbar = () => {
 
                 </div>
 
+                <div className='user-deposit closed animate__animated animate__fadeIn'>
+
+                    <div className="user-deposit-card-header">
+
+                        <div className="user-deposit-card-header-left">
+
+                            <h1>Bank</h1>
+
+                        </div>
+
+                        <div className="user-deposit-card-header-right">
+
+                            <button onClick={handleDepositClickBack}> <img src={cross} alt="x" /> </button>
+
+                        </div>
+
+                    </div>
+
+                    <div className="user-deposit-card-content">
+
+                        <div className="deposit-input">
+
+                            <h1>Deposit</h1>
+
+                            <div className='input-container'>
+
+                                <input type="number" placeholder="Enter amount" id='deposit-input' />
+
+                                <button id='deposit-button' >Deposit</button>
+
+                            </div>
+
+                        </div>
+
+                        <div className="extra-promotions">
+
+                            <svg width="120" height="50">
+
+                                <path fill="#1C1D21" fillRule="evenodd" stroke="#6E6E78" strokeWidth="2"
+                                    d="M107.21.36a1.076 1.076 0 0 1 .996.664L118.152 25l-9.946 23.976a1.076 1.076 0 0 1-.995.665H1.436A1.074 1.074 0 0 1 .36 48.564V1.436A1.074 1.074 0 0 1 1.436.36Z">
+                                </path>
+
+                            </svg>
+
+                            <svg width="120" height="50">
+
+                                <path fill="#1C1D21" fillRule="evenodd" stroke="#6E6E78" strokeWidth="2"
+                                    d="M107.812.718 117.997 25l-9.518 23.83-106.129.452a.716.716 0 0 1-.718-.718L10.988 25 1.683 1.703a.716.716 0 0 1 .4-.934l105.73-.05Z">
+                                </path>
+
+                            </svg>
+
+                            <svg width="120" height="50">
+
+                                <path fill="#1C1D21" fillRule="evenodd" stroke="#6E6E78" strokeWidth="2"
+                                    d="M116.564.36a1.074 1.074 0 0 1 1.077 1.076v47.128a1.074 1.074 0 0 1-1.077 1.077H1.619a1.074 1.074 0 0 1-1.077-1.077L10.327 25 .626 1.853a1.074 1.074 0 0 1 .577-1.41Z">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+                        <div className="withdraw-input">
+
+                            <h1>Withdraw</h1>
+
+                            <div className='input-container'>
+
+                                <input type="number" placeholder="Enter amount" id='withdraw-input' />
+
+                                <button id='withdraw-button' >Withdraw</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
     );
 };
-
-
-
-

@@ -10,6 +10,146 @@ import rain from "../images/icons/rain.svg";
 import command from "../images/icons/command.svg";
 import tips from "../images/icons/tips.svg";
 import gifs from "../images/icons/gif.svg";
+import avatar from "../images/design/avatar.png";
+
+import io from "socket.io-client";
+import { toast } from "react-toastify";
+
+const socket = io("http://localhost:4000");
+
+socket.on("all-chat-messages", (data) => {
+
+    data.messages.sort((a, b) => a.timestamp - b.timestamp);
+    data.messages.forEach((message) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message');
+
+        const leftSideElement = document.createElement('div');
+        leftSideElement.classList.add('left-side');
+        messageElement.appendChild(leftSideElement);
+
+        const avatarElement = document.createElement('div');
+        avatarElement.classList.add('avatar');
+        leftSideElement.appendChild(avatarElement);
+
+        const avatarImageElement = document.createElement('img');
+        avatarImageElement.src = avatar;
+        avatarElement.appendChild(avatarImageElement);
+
+        const rightSideElement = document.createElement('div');
+        rightSideElement.classList.add('right-side');
+        messageElement.appendChild(rightSideElement);
+
+        const headerElement = document.createElement('div');
+        headerElement.classList.add('header');
+        rightSideElement.appendChild(headerElement);
+
+        const usernameElement = document.createElement('div');
+        usernameElement.classList.add('username');
+        headerElement.appendChild(usernameElement);
+
+        const usernameTextElement = document.createElement('p');
+        usernameTextElement.classList.add('message-username');
+        usernameTextElement.innerText = message.username;
+        usernameElement.appendChild(usernameTextElement);
+
+        const timeElement = document.createElement('div');
+        timeElement.classList.add('time');
+        headerElement.appendChild(timeElement);
+
+        const timeTextElement = document.createElement('p');
+        timeTextElement.classList.add('message-time');
+        const date = new Date(message.timestamp);
+        const hours = date.getHours();
+        const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        timeTextElement.innerText = `${hours}:${minutes}`;
+        timeElement.appendChild(timeTextElement);
+
+        const messageContentElement = document.createElement('div');
+        messageContentElement.classList.add('message');
+        rightSideElement.appendChild(messageContentElement);
+
+        const messageTextElement = document.createElement('p');
+        messageTextElement.classList.add('message-text');
+        messageTextElement.innerText = message.message;
+        messageContentElement.appendChild(messageTextElement);
+
+        const chatMessages = document.querySelector('.side-chat-body');
+        chatMessages.appendChild(messageElement);
+    });
+
+    if (data.messages.length > 30) {
+        const chatMessages = document.querySelector('.side-chat-body');
+        chatMessages.removeChild(chatMessages.firstChild);
+    }
+
+    const chatMessages = document.querySelector('.side-chat-body');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+socket.on("new-message", (data) => {
+
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('chat-message');
+
+    const leftSideElement = document.createElement('div');
+    leftSideElement.classList.add('left-side');
+    messageElement.appendChild(leftSideElement);
+
+    const avatarElement = document.createElement('div');
+    avatarElement.classList.add('avatar');
+    leftSideElement.appendChild(avatarElement);
+
+    const avatarImageElement = document.createElement('img');
+    avatarImageElement.src = avatar;
+    avatarElement.appendChild(avatarImageElement);
+
+    const rightSideElement = document.createElement('div');
+    rightSideElement.classList.add('right-side');
+    messageElement.appendChild(rightSideElement);
+
+    const headerElement = document.createElement('div');
+    headerElement.classList.add('header');
+    rightSideElement.appendChild(headerElement);
+
+    const usernameElement = document.createElement('div');
+    usernameElement.classList.add('username');
+    headerElement.appendChild(usernameElement);
+
+    const usernameTextElement = document.createElement('p');
+    usernameTextElement.classList.add('message-username');
+    usernameTextElement.innerText = data.message.username;
+    usernameElement.appendChild(usernameTextElement);
+
+    const timeElement = document.createElement('div');
+    timeElement.classList.add('time');
+    headerElement.appendChild(timeElement);
+
+    const timeTextElement = document.createElement('p');
+    timeTextElement.classList.add('message-time');
+    const date = new Date(data.message.timestamp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    timeTextElement.innerText = `${hours}:${minutes}`;
+    timeElement.appendChild(timeTextElement);
+
+    const messageContentElement = document.createElement('div');
+    messageContentElement.classList.add('message');
+    rightSideElement.appendChild(messageContentElement);
+
+    const messageTextElement = document.createElement('p');
+    messageTextElement.classList.add('message-text');
+    messageTextElement.innerText = data.message.message;
+    messageContentElement.appendChild(messageTextElement);
+
+    const chatMessages = document.querySelector('.side-chat-body');
+    chatMessages.appendChild(messageElement);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+});
+
+socket.emit('get-all-chat-messages');
 
 export const SideChat = () => {
     const [showPicker, setShowPicker] = useState(false);
@@ -27,15 +167,41 @@ export const SideChat = () => {
         setInputValue(value);
     };
 
+    const handleSendMessage = () => {
+
+        const username = document.getElementById("username").innerHTML;
+
+        if (username === "Username") {
+            toast.error("Please connect your wallet to send a message");
+        } else if (inputValue === "") {
+            toast.error("Please enter a message");
+        } else {
+            socket.emit('chat-message', {
+                message: inputValue,
+                username: username
+            });
+            setInputValue("");
+        }
+
+    };
+
     useEffect(() => {
         if (inputValue !== "") {
             setButtonDisplay("flex");
         } else {
             setButtonDisplay("none");
         }
+
     }, [inputValue]);
 
     const emojiClass = showPicker ? "emoji-active" : "";
+
+    if (showPicker) {
+
+        const chatMessages = document.querySelector('.side-chat-body');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    }
 
     return (
 
@@ -63,15 +229,15 @@ export const SideChat = () => {
 
                     <div className="side-chat-footer-input">
 
-                        <input type="text" placeholder="Type a message..." value={inputValue} onChange={handleInputChange}/>
+                        <input type="text" placeholder="Type a message..." value={inputValue} onChange={handleInputChange} />
 
-                        <img src={emoji} alt="emoji" onClick={() => setShowPicker(!showPicker)} className={emojiClass}/>
+                        <img src={emoji} alt="emoji" onClick={() => setShowPicker(!showPicker)} className={emojiClass} />
 
                     </div>
 
                     <div className="side-chat-footer-button animate__animated animate__fadeInRight" style={{ display: buttonDisplay }}>
 
-                        <button> <img src={send} alt="" /> </button>
+                        <button onClick={handleSendMessage}> <img src={send} alt="" /> </button>
 
                     </div>
 
@@ -81,17 +247,17 @@ export const SideChat = () => {
 
                     <div className="side-chat-footer-extras-left-side">
 
-                        <img src={rain} alt="rain"/>
+                        <img src={rain} alt="rain" />
 
-                        <img src={command} alt="/command"/>
+                        <img src={command} alt="/command" />
 
-                        <img src={tips} alt="tips"/>
+                        <img src={tips} alt="tips" />
 
                     </div>
 
                     <div className="side-chat-footer-extras-right-side">
 
-                        <img src={gifs} alt="gifs"/>
+                        <img src={gifs} alt="gifs" />
 
                     </div>
 
