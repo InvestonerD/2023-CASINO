@@ -266,7 +266,6 @@ function Crash() {
             balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
             setBalance(data.balance.$numberDecimal);
-            toast.info("Your balance now is " + parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
         }, 1500);
 
     });
@@ -276,7 +275,6 @@ function Crash() {
         balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
         setBalance(data.balance.$numberDecimal);
-        toast.info("Your balance now is " + parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
     });
 
     crash.on('crashed', (data) => {
