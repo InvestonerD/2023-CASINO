@@ -57,11 +57,9 @@ function Crash() {
 
                 let currentBalance = document.querySelector('.balance').innerHTML;
 
-                // clean the balance removing the $ sign and the commas
+                let balance_Fixed = currentBalance.replace('$', '').replace(',', '');
 
-                currentBalance = currentBalance.replace('$', '').replace(',', '');
-
-                setBalance(currentBalance);
+                setBalance(balance_Fixed);
 
             } else {
 
