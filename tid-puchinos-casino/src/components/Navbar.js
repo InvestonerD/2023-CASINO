@@ -31,6 +31,8 @@ const socket = io("casino-server.fly.dev");
 
 socket.on("user-data", (data) => {
 
+    setTimeout(() => {
+
     let balance = document.querySelector(".balance");
 
     balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
@@ -39,6 +41,8 @@ socket.on("user-data", (data) => {
 
     let username = document.getElementById("username");
     username.innerHTML = data.username;
+
+    }, 1500);
 
 });
 
