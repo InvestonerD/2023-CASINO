@@ -57,9 +57,15 @@ function Crash() {
 
                 let currentBalance = document.querySelector('.balance').innerHTML;
 
-                let balance_Fixed = currentBalance.replace('$', '').replace(',', '');
+                let balance_Fixed = currentBalance.replace('$', '');
 
-                setBalance(balance_Fixed);
+                let balance_Fixed2 = balance_Fixed.replace(',', '');
+
+                setTimeout(() => {
+
+                    setBalance(balance_Fixed2);
+
+                }, 1000);
 
             } else {
 
