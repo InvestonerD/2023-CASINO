@@ -101,25 +101,22 @@ function Crash() {
         const username = document.getElementById('username').innerHTML;
 
         const betAmount = document.getElementById('crash-amount').value;
-        const betCashOut = document.getElementById('crash-cash-out').value;
+        // const betCashOut = document.getElementById('crash-cash-out').value;
 
         let amount_input = document.getElementById('crash-amount');
         let cash_out_input = document.getElementById('crash-cash-out');
 
         if (username === "Username") {
             toast.error("You must be logged in to bet!");
-        } else if (betAmount === "" || betCashOut === "") {
-            toast.error("Please fill out all fields!");
+        } else if (betAmount === "") {
+            toast.error("Please enter an amount to bet!");
         } else if (betAmount < 0.01) {
             toast.error("Bet amount must be greater than 0.01!");
-        } else if (betCashOut < 1.01) {
-            toast.error("Cash out must be greater than 1.01!");
         } else if (betAmount > balance) {
             toast.error("You don't have enough money to bet that amount! your balance is $" + balance);
         } else {
             crash.emit('bet', {
                 amount: betAmount,
-                cashOut: betCashOut,
                 username: username
             });
             toast.success("Bet placed!");
@@ -269,7 +266,10 @@ function Crash() {
             let balance = document.querySelector('.balance');
             balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
-            setBalance(data.balance.$numberDecimal);
+            let fixed_Amount = data.balance.$numberDecimal.replace('$', '');
+            let fixed_Amount2 = fixed_Amount.replace(',', '');
+
+            setBalance(fixed_Amount2);
         }, 1500);
 
     });
@@ -278,7 +278,10 @@ function Crash() {
         let balance = document.querySelector('.balance');
         balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
-        setBalance(data.balance.$numberDecimal);
+        let fixed_Amount = data.balance.$numberDecimal.replace('$', '');
+        let fixed_Amount2 = fixed_Amount.replace(',', '');
+
+        setBalance(fixed_Amount2);
     });
 
     crash.on('crashed', (data) => {
