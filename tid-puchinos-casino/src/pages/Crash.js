@@ -111,7 +111,7 @@ function Crash() {
         } else if (betCashOut < 1.01) {
             toast.error("Cash out must be greater than 1.01!");
         } else if (betAmount > balance) {
-            toast.error("You don't have enough money to bet that amount!");
+            toast.error("You don't have enough money to bet that amount! your balance is $" + balance);
         } else {
             crash.emit('bet', {
                 amount: betAmount,
