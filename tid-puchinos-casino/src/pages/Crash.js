@@ -61,11 +61,7 @@ function Crash() {
 
                 let balance_Fixed2 = balance_Fixed.replace(',', '');
 
-                setTimeout(() => {
-
                     setBalance(balance_Fixed2);
-
-                }, 1000);
 
             } else {
 
@@ -73,7 +69,7 @@ function Crash() {
 
             }
 
-        }, 2200);
+        }, 1750);
 
     }, []);
 
