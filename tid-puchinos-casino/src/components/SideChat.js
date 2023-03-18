@@ -149,8 +149,6 @@ socket.on("new-message", (data) => {
 
 });
 
-socket.emit('get-all-chat-messages');
-
 export const SideChat = () => {
     const [showPicker, setShowPicker] = useState(false);
     const [inputValue, setInputValue] = useState("");

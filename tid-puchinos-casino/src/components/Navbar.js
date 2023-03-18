@@ -35,6 +35,8 @@ socket.on("user-data", (data) => {
 
     balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
+    toast.success("Your balance available is: " + parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
+
     let username = document.getElementById("username");
     username.innerHTML = data.username;
 

@@ -23,6 +23,26 @@ crash.on('connect', () => {
 
 })
 
+crash.on('countdown', (data) => {
+    let countdown = document.getElementById('countdown');
+    countdown.style.display = 'flex';
+    countdown.innerHTML = 'Game starting in ' + data.countdown;
+
+    if (data.countdown <= 0) {
+        countdown.style.display = 'none';
+    }
+
+    if (data.countdown <= 3) {
+        let amount_input = document.getElementById('crash-amount');
+        let cash_out_input = document.getElementById('crash-cash-out');
+        amount_input.disabled = true;
+        cash_out_input.disabled = true;
+
+        amount_input.style.display = 'none';
+        cash_out_input.style.display = 'none';
+    }
+});
+
 function Crash() {
 
     const [active_bet, setBet] = useState(0);
@@ -49,7 +69,7 @@ function Crash() {
 
             }
 
-        }, 500);
+        }, 1000);
 
     }, []);
 
@@ -197,28 +217,8 @@ function Crash() {
                 }
             }
 
-        }, 500);
+        }, 200);
 
-    });
-
-    crash.on('countdown', (data) => {
-        let countdown = document.getElementById('countdown');
-        countdown.style.display = 'flex';
-        countdown.innerHTML = 'Game starting in ' + data.countdown;
-
-        if (data.countdown <= 0) {
-            countdown.style.display = 'none';
-        }
-
-        if (data.countdown <= 3) {
-            let amount_input = document.getElementById('crash-amount');
-            let cash_out_input = document.getElementById('crash-cash-out');
-            amount_input.disabled = true;
-            cash_out_input.disabled = true;
-
-            amount_input.style.display = 'none';
-            cash_out_input.style.display = 'none';
-        }
     });
 
     crash.on('round', (data) => {
@@ -266,6 +266,7 @@ function Crash() {
             balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
             setBalance(data.balance.$numberDecimal);
+            toast.info("Your balance now is " + parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
         }, 1500);
 
     });
@@ -275,6 +276,7 @@ function Crash() {
         balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
         setBalance(data.balance.$numberDecimal);
+        toast.info("Your balance now is " + parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
     });
 
     crash.on('crashed', (data) => {
