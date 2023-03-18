@@ -61,7 +61,9 @@ function Crash() {
 
                 let balance_Fixed2 = balance_Fixed.replace(',', '');
 
-                    setBalance(balance_Fixed2);
+                let final_balance = parseFloat(balance_Fixed2);
+
+                    setBalance(final_balance);
 
             } else {
 
@@ -264,8 +266,9 @@ function Crash() {
 
             let fixed_Amount = data.balance.$numberDecimal.replace('$', '');
             let fixed_Amount2 = fixed_Amount.replace(',', '');
+            let final_balance = parseFloat(fixed_Amount2);
 
-            setBalance(fixed_Amount2);
+            setBalance(final_balance);
         }, 1500);
 
     });
@@ -276,8 +279,9 @@ function Crash() {
 
         let fixed_Amount = data.balance.$numberDecimal.replace('$', '');
         let fixed_Amount2 = fixed_Amount.replace(',', '');
+        let final_balance = parseFloat(fixed_Amount2);
 
-        setBalance(fixed_Amount2);
+        setBalance(final_balance);
     });
 
     crash.on('crashed', (data) => {
