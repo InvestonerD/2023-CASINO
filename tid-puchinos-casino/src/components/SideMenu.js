@@ -89,7 +89,7 @@ export const SideMenu = () => {
 
                 </div>
 
-                <div className="icon-container">
+                <div className="icon-container" onClick={() => window.location.href = '/raffles'}>
 
                     <img src={tickets} alt="TID_logo" />
 

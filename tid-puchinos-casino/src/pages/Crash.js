@@ -14,36 +14,10 @@ import avatar from '../images/design/bet-avatar.png'
 import io from 'socket.io-client';
 import { toast } from "react-toastify";
 
-
-const crash = io('casino-server.fly.dev/crash');
-
-crash.on('connect', () => {
-
-    toast.info('Connected to Crash Server')
-
-})
-
-crash.on('countdown', (data) => {
-    let countdown = document.getElementById('countdown');
-    countdown.style.display = 'flex';
-    countdown.innerHTML = 'Game starting in ' + data.countdown;
-
-    if (data.countdown <= 0) {
-        countdown.style.display = 'none';
-    }
-
-    if (data.countdown <= 3) {
-        let amount_input = document.getElementById('crash-amount');
-        let cash_out_input = document.getElementById('crash-cash-out');
-        amount_input.disabled = true;
-        cash_out_input.disabled = true;
-
-        amount_input.style.display = 'none';
-        cash_out_input.style.display = 'none';
-    }
-});
-
 function Crash() {
+
+    // const crash = io('http://localhost:4000/crash');
+    const crash = io('casino-server.fly.dev/crash');
 
     const [active_bet, setBet] = useState(0);
 
@@ -63,7 +37,10 @@ function Crash() {
 
                 let final_balance = parseFloat(balance_Fixed2);
 
-                    setBalance(final_balance);
+                    setBalance(parseFloat(final_balance));
+
+                    toast.success('Your balance is now ' + parseFloat(final_balance).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
+
 
             } else {
 
@@ -71,7 +48,7 @@ function Crash() {
 
             }
 
-        }, 1750);
+        }, 2000);
 
     }, []);
 
@@ -147,9 +124,27 @@ function Crash() {
 
         toast.success("You Won " + cashOutAmount);
 
-
-
     }
+
+    crash.on('countdown', (data) => {
+        let countdown = document.getElementById('countdown');
+        countdown.style.display = 'flex';
+        countdown.innerHTML = 'Game starting in ' + data.countdown;
+    
+        if (data.countdown <= 0) {
+            countdown.style.display = 'none';
+        }
+    
+        if (data.countdown <= 3) {
+            let amount_input = document.getElementById('crash-amount');
+            let cash_out_input = document.getElementById('crash-cash-out');
+            amount_input.disabled = true;
+            cash_out_input.disabled = true;
+    
+            amount_input.style.display = 'none';
+            cash_out_input.style.display = 'none';
+        }
+    });
 
     crash.on('update-counter', (data) => {
 

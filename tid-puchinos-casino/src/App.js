@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { WalletContextWrapper } from './context/WalletContextProvider.js';
 import Home from './pages/Home';
 import Crash from './pages/Crash';
+import Raffles from './pages/Raffles';
+import RaffleDetails from './pages/RaffleDetails';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -27,6 +29,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/crash" element={<Crash />} />
+            <Route exact path="/raffles" element={<Raffles />} />
+            <Route
+          path="/raffles/:id" element={<RaffleDetails />}/>
           </Routes>
         </Router>
       </WalletContextWrapper>

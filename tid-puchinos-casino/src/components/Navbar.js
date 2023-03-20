@@ -27,7 +27,8 @@ import io from "socket.io-client";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const socket = io("casino-server.fly.dev");
+const socket = io("casino-server.fly.dev/general");
+// const socket = io("http://localhost:4000/general");
 
 socket.on("user-data", (data) => {
 
@@ -37,12 +38,10 @@ socket.on("user-data", (data) => {
 
     balance.innerHTML = parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
-    toast.success("Your balance available is: " + parseFloat(data.balance.$numberDecimal).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
-
     let username = document.getElementById("username");
     username.innerHTML = data.username;
 
-    }, 1000);
+    }, 1500);
 
 });
 
@@ -55,6 +54,17 @@ export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const [isUserOpen, setIsUserOpen] = useState(false);
+
+    useEffect(() => {
+
+        if (publicKey) {
+            setIsConnected(true);
+            socket.emit("wallet-connected", publicKey.toString());
+        } else {
+            setIsConnected(false);
+        }
+
+    }, [publicKey]);
 
     const handleChatClick = () => {
 
@@ -158,17 +168,6 @@ export const Navbar = () => {
         document.querySelector('.user-profile-card').classList.toggle('open');
 
     }
-
-    useEffect(() => {
-
-        if (publicKey) {
-            setIsConnected(true);
-            socket.emit("wallet-connected", publicKey.toString());
-        } else {
-            setIsConnected(false);
-        }
-
-    }, [publicKey]);
 
 
     return (

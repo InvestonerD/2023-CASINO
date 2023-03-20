@@ -16,6 +16,7 @@ import io from "socket.io-client";
 import { toast } from "react-toastify";
 
 const socket = io("casino-server.fly.dev");
+// const socket = io("http://localhost:4000");
 
 socket.on("all-chat-messages", (data) => {
 
