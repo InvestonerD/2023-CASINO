@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Crash from './pages/Crash';
 import Raffles from './pages/Raffles';
 import RaffleDetails from './pages/RaffleDetails';
+import Jackpot from './pages/Jackpot';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/raffles" element={<Raffles />} />
             <Route
           path="/raffles/:id" element={<RaffleDetails />}/>
+            <Route path="/jackpot" element={<Jackpot />} />
           </Routes>
         </Router>
       </WalletContextWrapper>

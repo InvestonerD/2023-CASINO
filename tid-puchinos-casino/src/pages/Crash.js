@@ -15,42 +15,45 @@ import io from 'socket.io-client';
 import { toast } from "react-toastify";
 
 function Crash() {
-
-    // const crash = io('http://localhost:4000/crash');
     const crash = io('casino-server.fly.dev/crash');
+    // const crash = io('http://localhost:4000/crash');
 
     const [active_bet, setBet] = useState(0);
-
     const [balance , setBalance] = useState(0);
 
+
     useEffect(() => {
-
-        setTimeout(() => {
-
-            if (document.getElementById('username') !== "Username") {
-
-                let currentBalance = document.querySelector('.balance').innerHTML;
-
-                let balance_Fixed = currentBalance.replace('$', '');
-
-                let balance_Fixed2 = balance_Fixed.replace(',', '');
-
-                let final_balance = parseFloat(balance_Fixed2);
-
-                    setBalance(parseFloat(final_balance));
-
-                    toast.success('Your balance is now ' + parseFloat(final_balance).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
-
-
-            } else {
-
-                toast.info('You need to login to play');
-
+        const waitForLoad = async () => {
+          return new Promise(resolve => {
+            const interval = setInterval(() => {
+              const loaded = document.getElementById('username')?.innerHTML;
+              if (loaded && loaded !== "Username") {
+                clearInterval(interval);
+                resolve();
+              }
+            }, 500);
+          });
+        };
+      
+        const loadData = async () => {
+          await waitForLoad();
+      
+          const currentBalance = document.querySelector('.balance')?.innerHTML;
+          if (currentBalance) {
+            const balanceFixed = currentBalance.replace('$', '').replace(',', '');
+            const finalBalance = parseFloat(balanceFixed);
+            if (setBalance) {
+              setBalance(parseFloat(finalBalance));
+              toast.success('Your balance is now ' + finalBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
             }
-
-        }, 2000);
-
-    }, []);
+          } else {
+            toast.info('Please login to play');
+          }
+        };
+      
+        loadData();
+      }, []);
+      
 
     const crashBetsRef = useRef(null);
 
