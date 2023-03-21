@@ -41,6 +41,15 @@ socket.on("user-data", (data) => {
     let username = document.getElementById("username");
     username.innerHTML = data.username;
 
+    // set the avatar, if the user has one, if not, set the default avatar
+    let avatar = document.getElementById("avatar");
+
+    if (data.avatar) {
+        avatar.src = data.avatar;
+    } else {
+        avatar.src = default_image;
+    }
+
     }, 1500);
 
 });
@@ -226,7 +235,7 @@ export const Navbar = () => {
 
                             <div className="image">
 
-                                <img src={default_image} alt="user" />
+                                <img src={default_image} alt="user" id='avatar'/>
 
                                 <img src={unverified} alt="unverified" className="unverified" />
 
