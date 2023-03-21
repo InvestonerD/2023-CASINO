@@ -79,7 +79,8 @@ function Crash() {
         const username = document.getElementById('username').innerHTML;
 
         const betAmount = document.getElementById('crash-amount').value;
-        // const betCashOut = document.getElementById('crash-cash-out').value;
+
+        const userAvatar = document.getElementById('avatar').src;
 
         let amount_input = document.getElementById('crash-amount');
         let cash_out_input = document.getElementById('crash-cash-out');
@@ -95,7 +96,8 @@ function Crash() {
         } else {
             crash.emit('bet', {
                 amount: betAmount,
-                username: username
+                username: username,
+                avatar: userAvatar
             });
             toast.success("Bet placed!");
             amount_input.disabled = true;
@@ -326,7 +328,11 @@ function Crash() {
             bet_player_info.classList.add('player-info');
 
             let bet_player_avatar = document.createElement('img');
-            bet_player_avatar.src = avatar;
+            if (bet.avatar === null) {
+                bet_player_avatar.src = avatar;
+            } else {
+                bet_player_avatar.src = bet.avatar;
+            }
 
             let bet_player_username = document.createElement('p');
             bet_player_username.innerHTML = bet.username;

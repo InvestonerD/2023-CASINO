@@ -302,6 +302,7 @@
 .navbar .user-profile .user-profile-card.open .user-profile-card-content .user-data .image img:nth-child(1) {
     border-radius: 100%;
     border: 4px #0A0A0B solid;
+    background-color: #0A0A0B;
 }
 
 .navbar .user-profile .user-profile-card.open .user-profile-card-content .user-data .image img:nth-child(2) {

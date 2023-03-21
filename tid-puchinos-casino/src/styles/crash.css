@@ -738,6 +738,8 @@
 }
 
 .crash-container .crash-content .crash-content-area .right-side .right-side-content .crash-bets .bet .player-info img {
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
