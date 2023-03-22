@@ -160,10 +160,17 @@ function Crash() {
         output.style.color = '#EDEAE5';
 
         let betProfits = document.querySelectorAll('.bet-profit');
-        
-        // for each individual bet get his .innerHTML and multiply it by the counter and add toLocalString
-        betProfits.forEach(betProfit => {
-            betProfit.innerHTML = (parseFloat(betProfit.innerHTML) * parseFloat(data.counter)).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+        // for every bet profit element get the innerHTML and save it to a variable so it can be used later multiplying it by the counter
+        betProfits.forEach((betProfit) => {
+            const [betProfitAmount, betProfitMultiplier] = betProfit.innerHTML.split('x');
+            const betProfitAmountFixed = betProfitAmount.replace('$', '').replace(',', '');
+            const betProfitAmountFloat = parseFloat(betProfitAmountFixed);
+            const betProfitMultiplierFloat = parseFloat(betProfitMultiplier);
+            const betProfitTotal = betProfitAmountFloat * betProfitMultiplierFloat;
+            
+            betProfit.innerHTML = betProfitTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
         });
 
 
