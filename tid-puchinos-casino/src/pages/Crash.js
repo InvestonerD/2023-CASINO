@@ -159,6 +159,15 @@ function Crash() {
         border.style.border = '4px solid #0A0A0B';
         output.style.color = '#EDEAE5';
 
+        let betProfits = document.querySelectorAll('.bet-profit');
+        
+        betProfits.forEach((betProfit) => {
+            let betAmount = parseFloat(betProfit.innerHTML);
+            let profit = parseFloat(betAmount * data.counter).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            betProfit.innerHTML = profit;
+        });
+
+
         if (data.counter >= 2.00) {
             output.style.animationIterationCount = 'infinite';
             border.style.border = '4px solid #44CE6B';
@@ -363,7 +372,8 @@ function Crash() {
             bet_profit_info.classList.add('profit-info');
 
             let bet_profit = document.createElement('p');
-            bet_profit.innerHTML = "$0.00";
+            bet_profit.innerHTML = parseFloat(bet.profit).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            bet_profit.classList.add('bet-profit');
 
             bet_profit_info.appendChild(bet_profit);
 
