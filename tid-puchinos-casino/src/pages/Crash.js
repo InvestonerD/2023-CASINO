@@ -163,7 +163,8 @@ function Crash() {
         
         betProfits.forEach((betProfit) => {
             let betAmount = parseFloat(betProfit.innerHTML);
-            let profit = parseFloat(betAmount * data.counter).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            let profit = parseFloat(betAmount * parseFloat(data.counter)).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            console.log(profit);
             betProfit.innerHTML = profit;
         });
 
@@ -372,7 +373,8 @@ function Crash() {
             bet_profit_info.classList.add('profit-info');
 
             let bet_profit = document.createElement('p');
-            bet_profit.innerHTML = parseFloat(bet.amount);
+            bet_profit.innerHTML = bet.amount;
+            console.log(bet.amount);
             bet_profit.classList.add('bet-profit');
 
             bet_profit_info.appendChild(bet_profit);
