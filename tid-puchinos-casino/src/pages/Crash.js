@@ -372,7 +372,7 @@ function Crash() {
             bet_profit_info.classList.add('profit-info');
 
             let bet_profit = document.createElement('p');
-            bet_profit.innerHTML = parseFloat(bet.profit).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            bet_profit.innerHTML = parseFloat(bet.amount);
             bet_profit.classList.add('bet-profit');
 
             bet_profit_info.appendChild(bet_profit);
