@@ -14,15 +14,15 @@ import avatar from '../images/design/bet-avatar.png'
 import io from 'socket.io-client';
 import { toast } from "react-toastify";
 
-const crash = io('casino-server.fly.dev/crash');
 function Crash() {
     // const crash = io('http://localhost:4000/crash');
 
     const [active_bet, setBet] = useState(0);
     const [balance , setBalance] = useState(0);
 
-
+    const crash = io('casino-server.fly.dev/crash');
     useEffect(() => {
+        
         const waitForLoad = async () => {
           return new Promise(resolve => {
             const interval = setInterval(() => {
