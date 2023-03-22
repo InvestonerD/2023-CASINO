@@ -14,46 +14,44 @@ import avatar from '../images/design/bet-avatar.png'
 import io from 'socket.io-client';
 import { toast } from "react-toastify";
 
+const crash = io('casino-server.fly.dev/crash');
 function Crash() {
     // const crash = io('http://localhost:4000/crash');
 
     const [active_bet, setBet] = useState(0);
-    const [balance , setBalance] = useState(0);
+    const [balance, setBalance] = useState(0);
 
-    const crash = io('casino-server.fly.dev/crash');
     useEffect(() => {
-        
         const waitForLoad = async () => {
-          return new Promise(resolve => {
-            const interval = setInterval(() => {
-              const loaded = document.getElementById('username')?.innerHTML;
-              if (loaded && loaded !== "Username") {
-                clearInterval(interval);
-                resolve();
-              }
-            }, 500);
-          });
+            return new Promise(resolve => {
+                const interval = setInterval(() => {
+                    const loaded = document.getElementById('username')?.innerHTML;
+                    if (loaded && loaded !== "Username") {
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }, 500);
+            });
         };
-      
+
         const loadData = async () => {
-          await waitForLoad();
-      
-          const currentBalance = document.querySelector('.balance')?.innerHTML;
-          if (currentBalance) {
-            const balanceFixed = currentBalance.replace('$', '').replace(',', '');
-            const finalBalance = parseFloat(balanceFixed);
-            if (setBalance) {
-              setBalance(parseFloat(finalBalance));
-              toast.success('Your balance is now ' + finalBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
+            await waitForLoad();
+
+            const currentBalance = document.querySelector('.balance')?.innerHTML;
+            if (currentBalance) {
+                const balanceFixed = currentBalance.replace('$', '').replace(',', '');
+                const finalBalance = parseFloat(balanceFixed);
+                if (setBalance) {
+                    setBalance(parseFloat(finalBalance));
+                    toast.success('Your balance is now ' + finalBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
+                }
+            } else {
+                toast.info('Please login to play');
             }
-          } else {
-            toast.info('Please login to play');
-          }
         };
-      
+
         loadData();
-      }, []);
-      
+    }, []);
 
     const crashBetsRef = useRef(null);
 
@@ -135,17 +133,17 @@ function Crash() {
         let countdown = document.getElementById('countdown');
         countdown.style.display = 'flex';
         countdown.innerHTML = 'Game starting in ' + data.countdown;
-    
+
         if (data.countdown <= 0) {
             countdown.style.display = 'none';
         }
-    
+
         if (data.countdown <= 3) {
             let amount_input = document.getElementById('crash-amount');
             let cash_out_input = document.getElementById('crash-cash-out');
             amount_input.disabled = true;
             cash_out_input.disabled = true;
-    
+
             amount_input.style.display = 'none';
             cash_out_input.style.display = 'none';
         }
@@ -316,13 +314,19 @@ function Crash() {
 
     crash.on('active-bets', (data) => {
 
+        let cash_out_button = document.getElementById('cashOut-button');
+
+
+        cash_out_button.style.display = 'none';
+
+
         data.activeBets.forEach((bet) => {
 
-            let active_bets_container = document.querySelector('.crash-bets');
 
             let active_bet = document.createElement('div');
             active_bet.classList.add('bet');
             active_bet.classList.add('animate__animated', 'animate__fadeInLeft');
+
 
             let bet_player_info = document.createElement('div');
             bet_player_info.classList.add('player-info');
@@ -339,6 +343,7 @@ function Crash() {
 
             bet_player_info.appendChild(bet_player_avatar);
             bet_player_info.appendChild(bet_player_username);
+
 
             let bet_amount_info = document.createElement('div');
             bet_amount_info.classList.add('amount-info');
@@ -366,25 +371,20 @@ function Crash() {
             active_bet.appendChild(bet_amount_info);
             active_bet.appendChild(bet_profit_info);
 
+            let active_bets_container = document.querySelector('.crash-bets');
             active_bets_container.appendChild(active_bet);
 
             if (bet.username === document.getElementById('username').innerHTML) {
-                let cash_out_button = document.getElementById('cashOut-button');
                 cash_out_button.innerHTML = bet.amount;
                 setBet(bet.amount);
 
                 cash_out_button.style.display = 'flex';
                 cash_out_button.style.justifyContent = 'center';
                 cash_out_button.style.alignItems = 'center';
-
-            } else {
-                let cash_out_button = document.getElementById('cashOut-button');
-                cash_out_button.style.display = 'none';
             }
 
-
-
         });
+
 
     });
 
