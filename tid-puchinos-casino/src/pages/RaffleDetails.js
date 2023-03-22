@@ -15,9 +15,9 @@ function RaffleDetails() {
   const [raffles_info, setRafflesInfo] = useState([]);
 
   const socket = io('casino-server.fly.dev/raffles');
+  // const socket = io("http://localhost:4000/raffles");
 
   useEffect(() => {
-    // const socket = io("http://localhost:4000/raffles");
 
     socket.emit("raffle-details", { id });
 

@@ -15,8 +15,8 @@ import io from 'socket.io-client';
 import { toast } from "react-toastify";
 
 const crash = io('casino-server.fly.dev/crash');
+// const crash = io('http://localhost:4000/crash');
 function Crash() {
-    // const crash = io('http://localhost:4000/crash');
 
     const [active_bet, setBet] = useState(0);
     const [balance, setBalance] = useState(0);
@@ -95,7 +95,8 @@ function Crash() {
             crash.emit('bet', {
                 amount: betAmount,
                 username: username,
-                avatar: userAvatar
+                avatar: userAvatar,
+                cashedOut: false
             });
             toast.success("Bet placed!");
             amount_input.disabled = true;
@@ -159,20 +160,9 @@ function Crash() {
         border.style.border = '4px solid #0A0A0B';
         output.style.color = '#EDEAE5';
 
-        let betProfits = document.querySelectorAll('.bet-profit');
-
-        // for every bet profit element get the innerHTML and save it to a variable so it can be used later multiplying it by the counter
-        betProfits.forEach((betProfit) => {
-            const [betProfitAmount, betProfitMultiplier] = betProfit.innerHTML.split('x');
-            const betProfitAmountFixed = betProfitAmount.replace('$', '').replace(',', '');
-            const betProfitAmountFloat = parseFloat(betProfitAmountFixed);
-            const betProfitMultiplierFloat = parseFloat(betProfitMultiplier);
-            const betProfitTotal = betProfitAmountFloat * betProfitMultiplierFloat;
+        crash.on('bet-cashed-out', (data) => {
             
-            betProfit.innerHTML = betProfitTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-
         });
-
 
         if (data.counter >= 2.00) {
             output.style.animationIterationCount = 'infinite';
@@ -378,8 +368,7 @@ function Crash() {
             bet_profit_info.classList.add('profit-info');
 
             let bet_profit = document.createElement('p');
-            bet_profit.innerHTML = bet.amount;
-            console.log(bet.amount);
+            bet_profit.innerHTML = 'in progress'
             bet_profit.classList.add('bet-profit');
 
             bet_profit_info.appendChild(bet_profit);
