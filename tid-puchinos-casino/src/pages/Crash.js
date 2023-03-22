@@ -162,10 +162,12 @@ function Crash() {
         let betProfits = document.querySelectorAll('.bet-profit');
         
         betProfits.forEach((betProfit) => {
-            let betAmount = parseFloat(betProfit.innerHTML);
-            let profit = parseFloat(betAmount * parseFloat(data.counter)).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-            console.log(profit);
-            betProfit.innerHTML = profit;
+            // for each bet profit, get the bet amount and multiply it by the counter and set it toLocalString
+            const betAmount = betProfit.parentElement.parentElement.querySelector('.bet-amount').innerHTML;
+            const betAmountFixed = betAmount.replace('$', '').replace(',', '');
+            const betAmountFloat = parseFloat(betAmountFixed);
+            const betProfitFloat = betAmountFloat * data.counter;
+            betProfit.innerHTML = betProfitFloat.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         });
 
 
