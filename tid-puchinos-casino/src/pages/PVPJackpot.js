@@ -65,7 +65,7 @@ function PVPJackpot() {
                             fontColor={'transparent'}
                             pointerProps={{
                                 className: 'pointer',
-                                src: 'https://i.imgur.com/9Z5QY9A.png',
+                                src: 'https://raw.githubusercontent.com/InvestonerD/2023-CASINO/main/tid-puchinos-casino/src/images/design/wheel-arrow.png',
                                 alt: 'pointer',
                             }}
                         />
