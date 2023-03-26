@@ -6,6 +6,8 @@ import Crash from './pages/Crash';
 import Raffles from './pages/Raffles';
 import RaffleDetails from './pages/RaffleDetails';
 import Jackpot from './pages/Jackpot';
+import Coinflip from './pages/Coinflip';
+import PVPJackpot from './pages/PVPJackpot';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -31,9 +33,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/crash" element={<Crash />} />
             <Route exact path="/raffles" element={<Raffles />} />
-            <Route
-          path="/raffles/:id" element={<RaffleDetails />}/>
+            <Route path="/raffles/:id" element={<RaffleDetails />}/>
             <Route path="/jackpot" element={<Jackpot />} />
+            <Route path="/coinflip" element={<Coinflip />} />
+            <Route path="/pvp-jackpot" element={<PVPJackpot />} />
           </Routes>
         </Router>
       </WalletContextWrapper>

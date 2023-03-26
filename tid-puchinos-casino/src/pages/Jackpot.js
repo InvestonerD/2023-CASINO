@@ -8,162 +8,486 @@ import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
 
 import { toast } from 'react-toastify';
-import '../styles/raffles.css'
+import '../styles/jackpot.css'
 
 
 
 const prizes = [
   {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "id": "00",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
-  },
-  {
-    "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
-  },
-  {
-    "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200x.png",
+    "text": "0x"
   },
   {
     "id": "02",
-    "image": "https://i.ibb.co/ZLHZgKf/good-0.png",
-    "text": "0.2 x"
-  },
-  {
-    "id": "00",
-    "image": "https://i.ibb.co/6Z6Xm9d/good-1.png",
-    "text": "0 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
   },
   {
     "id": "05",
-    "image": "https://i.ibb.co/T1M05LR/good-2.png",
-    "text": "0.5 x"
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
   },
-  
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "02",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.2x.png",
+    "text": "0.2x"
+  },
+  {
+    "id": "05",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%200.5x.png",
+    "text": "0.5x"
+  },
+  {
+    "id": "1",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%201x.png",
+    "text": "1x"
+  },
+  {
+    "id": "2",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%202x.png",
+    "text": "2x"
+  },
+  {
+    "id": "5",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%205x.png",
+    "text": "5x"
+  },
+  {
+    "id": "10",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%2010x.png",
+    "text": "10x"
+  },
+  {
+    "id": "25",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%2025x.png",
+    "text": "25x"
+  },
+  {
+    "id": "50",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%2050x.png",
+    "text": "50x"
+  },
+  {
+    "id": "100",
+    "image": "https://raw.githubusercontent.com/InvestonerD/TIMD-images/main/FRAME%20100x.png",
+    "text": "100x"
+  }
 ];
 
 const winPrizeIndex = 0;
@@ -194,7 +518,6 @@ function Jackpot () {
 
   const [start, setStart] = useState(false);
 
-  // const prizeIndex = prizes.length * 4 + winPrizeIndex;
   const prizeIndex = Math.floor(Math.random() * prizeList.length);
 
   const handleStart = () => {
@@ -202,9 +525,7 @@ function Jackpot () {
   };
 
   const handlePrizeDefined = () => {
-    // get the id of the prize
-    // console.log(prizeList[prizeIndex].id);
-    toast.success('You won ' + prizeList[prizeIndex].text);
+    toast.success('You won ' + prizeList[prizeIndex].text + ' your bet!');
   };
 
   return (

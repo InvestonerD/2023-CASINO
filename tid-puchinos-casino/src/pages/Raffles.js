@@ -22,7 +22,7 @@ function Raffles() {
             setRaffles(data.raffles);
         });
 
-    }, []);
+    }, [ socket ]);
 
     return (
 
