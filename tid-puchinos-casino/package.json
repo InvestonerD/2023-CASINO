@@ -44,7 +44,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build:digitalocean" : "npm install --legacy-peer-deps --production=false && npm run build && npm ci --production",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
