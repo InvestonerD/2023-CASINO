@@ -42,8 +42,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start --legacy-peer-deps --force",
-    "build": "react-app-rewired build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build --legacy-peer-deps --force",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
