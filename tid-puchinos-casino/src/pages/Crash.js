@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 
 const crash = io('casino-server.fly.dev/crash');
 // const crash = io('http://localhost:4000/crash');
+
 function Crash() {
 
     const [active_bet, setBet] = useState(0);

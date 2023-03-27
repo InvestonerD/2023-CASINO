@@ -3,6 +3,11 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { SystemProgram, Transaction, PublicKey } from "@solana/web3.js";
 import { toast } from "react-toastify";
 
+import io from "socket.io-client";
+
+// const socket = io("http://localhost:4000/general");
+const socket = io('casino-server.fly.dev/general');
+
 const SendBlazed = () => {
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
@@ -14,7 +19,7 @@ const SendBlazed = () => {
 
         const toPublicKey = new PublicKey("AHiVeE85J8CWH4Kjgosje7DbBbtvoBtvNuvoMgtWUr3b");
 
-        const lamports = 1000000;
+        const lamports = document.getElementById("deposit-input").value * 1000000000;
 
         const transaction = new Transaction().add(
           SystemProgram.transfer({
@@ -27,6 +32,13 @@ const SendBlazed = () => {
         const signedTransaction = await sendTransaction(transaction, connection);
 
         await connection.confirmTransaction(signedTransaction);
+
+        const username = document.getElementById("username").innerHTML;
+
+        socket.emit("deposit", {
+          username: username,
+          amount: lamports,
+        });
 
         resolve("Solana sent successfully!");
       } catch (error) {
@@ -58,9 +70,19 @@ const SendBlazed = () => {
 };
 
   return (
-    <>
-      <button onClick={handleClick}>Send Solana</button>
-    </>
+    <div className="deposit-input">
+
+      <h1>Deposit</h1>
+
+        <div className='input-container'>
+
+            <input type="number" placeholder="Enter amount" id='deposit-input' />
+
+            <button id='deposit-button' onClick={handleClick}>Deposit</button>
+
+        </div>
+
+    </div>
   );
 };
 

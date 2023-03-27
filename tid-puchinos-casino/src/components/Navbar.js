@@ -22,6 +22,8 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import '@solana/wallet-adapter-react-ui/styles.css';
 import 'animate.css';
 
+import SendBlazed from '../extras/depositSol.js';
+
 import io from "socket.io-client";
 
 import { toast } from "react-toastify";
@@ -56,6 +58,8 @@ socket.on("user-data", (data) => {
 
 export const Navbar = () => {
 
+
+
     const { publicKey } = useWallet();
 
     const [isConnected, setIsConnected] = useState(false);
@@ -63,6 +67,8 @@ export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const [isUserOpen, setIsUserOpen] = useState(false);
+
+
 
     useEffect(() => {
 
@@ -74,6 +80,16 @@ export const Navbar = () => {
         }
 
     }, [publicKey]);
+
+
+
+    socket.on("updated-updated-balance-plus", (data) => {
+
+        toast(data)
+
+    });
+
+
 
     const handleChatClick = () => {
 
@@ -177,6 +193,7 @@ export const Navbar = () => {
         document.querySelector('.user-profile-card').classList.toggle('open');
 
     }
+
 
 
     return (
@@ -429,19 +446,7 @@ export const Navbar = () => {
 
                     <div className="user-deposit-card-content">
 
-                        <div className="deposit-input">
-
-                            <h1>Deposit</h1>
-
-                            <div className='input-container'>
-
-                                <input type="number" placeholder="Enter amount" id='deposit-input' />
-
-                                <button id='deposit-button' >Deposit</button>
-
-                            </div>
-
-                        </div>
+                        <SendBlazed />
 
                         <div className="extra-promotions">
 

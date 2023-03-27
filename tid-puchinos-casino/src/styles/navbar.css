@@ -215,6 +215,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: 24px;
+    z-index: 9999;
 }
 
 .navbar .user-profile .user-profile-card.open.open .user-profile-card-header {

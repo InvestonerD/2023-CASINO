@@ -6,7 +6,6 @@ import { Footer } from '../components/Footer.js';
 import { BigWins } from '../components/BigWins.js';
 import '../styles/global.css'
 import '../styles/home.css'
-import  SendBlazed  from '../extras/sendBlazed.js';
 
 import left_arrow from '../images/icons/left-arrow.svg'
 import right_arrow from '../images/icons/right-arrow.svg'
@@ -96,8 +95,6 @@ function Home() {
                     </div>
 
                     <BigWins />
-
-                    <SendBlazed />
 
                     <div className='home-content-wheel'>
 
