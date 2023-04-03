@@ -8,21 +8,18 @@ import io from 'socket.io-client';
 
 import '../styles/raffles.css'
 
+    // const socket = io('casino-server.fly.dev/raffles');
+    const socket = io("http://localhost:4000/raffles");
+
 function Raffles() {
 
     const [raffles, setRaffles] = useState([]);
-
-    const socket = io('casino-server.fly.dev/raffles');
-    // const socket = io("http://localhost:4000/raffles");
-
-    useEffect(() => {
 
 
         socket.on("raffles", (data) => {
             setRaffles(data.raffles);
         });
 
-    }, [ socket ]);
 
     return (
 
@@ -51,7 +48,7 @@ function Raffles() {
                                     <div className='image-container' style={{ backgroundImage: `url(${raffle.image})` }}>
                                         <div className="price-tag">
                                             <h3 id="quantity">{raffle.price}</h3>
-                                            <span>$BLAZED</span>
+                                            <span>BLAZED</span>
                                         </div>
                                     </div>
                                     <div className='info-container'>

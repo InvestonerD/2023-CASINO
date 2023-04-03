@@ -10,7 +10,7 @@
     padding: 0 24px 0 24px;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 99999;
 }
 
 .navbar .left-row {
@@ -51,12 +51,11 @@
 }
 
 .navbar .right-row .user-balance.connected img {
-    width: 32px;
-    height: 32px;
-    
+    width: 20px;
+    height: 20px;
 }
 
-.navbar .right-row .user-balance.connected p {
+.navbar .right-row .user-balance.connected span {
     width: auto;
     height: 32px;
     display: flex;
@@ -884,6 +883,290 @@
 
 
 
+.navbar .user-profile .currency-select.closed {
+    display: none;
+}
+
+.navbar .user-profile .currency-select {
+    width: 464px;
+    height: auto;
+    border-radius: 4px;
+    background-color: #131315;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 36px 24px;
+    gap: 12px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-header {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-header .currency-select-card-header-left {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-header .currency-select-card-header-left h1 {
+    font-family: Bahnschrift;
+    font-size: 24px;
+    font-weight: 600;
+    color: #EDEAE5;
+    cursor: default;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-header .currency-select-card-header-right {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-header .currency-select-card-header-right button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-header .currency-select-card-header-right button:hover img {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(4%) saturate(769%) hue-rotate(323deg) brightness(104%) contrast(86%);
+}
+
+
+
+.navbar .user-profile .currency-select .currency-select-card-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 2px #222225 solid;
+    border-radius: 4px;
+    transition: .2s;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container:hover {
+    border: 2px #44CE6B solid;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container.selected:hover {
+    cursor: default;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container.locked:hover {
+    border: 2px #DD4742 solid;
+    transition: .2s;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container.selected {
+    border: 2px #44CE6B solid;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .left-side-container {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .left-side-container img {
+    width: 16px;
+    height: 16px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .left-side-container .currency-amounts {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .left-side-container .currency-amounts h1 {
+    height: 24px;
+    font-family: Bahnschrift;
+    font-size: 24px;
+    font-weight: 400;
+    color: #EDEAE5;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .left-side-container .currency-amounts span {
+    height: 16px;
+    font-family: Bahnschrift;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6E6E78;
+}
+
+
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container.locked {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container.locked img {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container .currency-name {
+    width: auto;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 16px;
+    background-color: #0A0A0B;
+    border-radius: 4px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container .currency-name img {
+    width: 16px;
+    height: 16px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container .currency-name h1 {
+    font-family: Bahnschrift;
+    font-size: 14px;
+    font-weight: 600;
+    color: #EDEAE5;
+    padding-top: 2px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container .currency-comparison {
+    width: auto;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-content .currency-select-container .right-side-container .currency-comparison span {
+    font-family: Bahnschrift;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6E6E78;
+    padding-top: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navbar .user-profile .currency-select .currency-select-card-buttons {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-buttons button:nth-child(1) {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-family: Bahnschrift;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6E6E78;
+    border: 2px #222225 solid;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-buttons button:nth-child(1):hover {
+    scale: 1.05;
+    transition: .2s;
+    color: #EDEAE5;
+    border: 2px #EDEAE5 solid;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-buttons button:nth-child(2) {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-family: Bahnschrift;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0A0A0B;
+    border: none;
+    background-color: #44CE6B;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.navbar .user-profile .currency-select .currency-select-card-buttons button:nth-child(2):hover {
+    scale: 1.05;
+    transition: .2s;
+}
+
+
+
 
 
 
@@ -912,8 +1195,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 24px;
-    gap: 24px;
+    padding: 36px 24px;
+    gap: 12px;
 }
 
 .navbar .user-profile .user-deposit .user-deposit-card-header {
@@ -924,20 +1207,15 @@
     justify-content: space-between;
 }
 
-.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-left {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-left h1 {
-    width: calc(100% - 40px);
+.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-right {
+    width: auto;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-right h1 {
     font-family: Bahnschrift;
     font-size: 24px;
     font-weight: 600;
@@ -945,17 +1223,17 @@
     cursor: default;
 }
 
-.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-right {
+.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-left {
     width: 24px;
     height: 24px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
-.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-right button {
-    width: 24px;
-    height: 24px;
+.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-left button {
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -964,191 +1242,8 @@
     cursor: pointer;
 }
 
-.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-right button img {
-    width: 18px;
-    height: 18px;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-right button:hover img {
+.navbar .user-profile .user-deposit .user-deposit-card-header .user-deposit-card-header-left button:hover img {
     filter: brightness(0) saturate(100%) invert(96%) sepia(4%) saturate(769%) hue-rotate(323deg) brightness(104%) contrast(86%);
-}
-
-
-
-
-
-.navbar .user-profile .user-deposit .user-deposit-card-content {
-    width: 360px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input h1 {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: Bahnschrift;
-    font-size: 16px;
-    font-weight: 600;
-    color: #EDEAE5;
-    cursor: default;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input .input-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input .input-container input {
-    width: 100%;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    font-family: Bahnschrift;
-    font-size: 16px;
-    font-weight: 400;
-    color: #EDEAE5;
-    border: none;
-    padding: 0 8px;
-    background-color: #0A0A0B;
-    cursor: text;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input .input-container input::-webkit-outer-spin-button,
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input .input-container input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input .input-container #deposit-button {
-    width: 128px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    font-family: Bahnschrift;
-    font-size: 16px;
-    font-weight: 600;
-    color: #0A0A0B;
-    border: none;
-    background-color: #44CE6B;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .deposit-input .input-container #deposit-button:hover {
-    scale: 1.05;
-    transition: .2s;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input h1 {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: Bahnschrift;
-    font-size: 16px;
-    font-weight: 600;
-    color: #EDEAE5;
-    cursor: default;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input .input-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input .input-container input {
-    width: 100%;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    font-family: Bahnschrift;
-    font-size: 16px;
-    font-weight: 400;
-    color: #EDEAE5;
-    border: none;
-    padding: 0 8px;
-    background-color: #0A0A0B;
-    cursor: text;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input .input-container input::-webkit-outer-spin-button,
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input .input-container input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input .input-container #withdraw-button {
-    width: 128px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    font-family: Bahnschrift;
-    font-size: 16px;
-    font-weight: 600;
-    color: #0A0A0B;
-    border: none;
-    background-color: #44CE6B;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.navbar .user-profile .user-deposit .user-deposit-card-content .withdraw-input .input-container #withdraw-button:hover {
-    scale: 1.05;
-    transition: .2s;
 }
 
 

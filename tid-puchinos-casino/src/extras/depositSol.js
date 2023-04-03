@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 
 import io from "socket.io-client";
 
-// const socket = io("http://localhost:4000/general");
-const socket = io('casino-server.fly.dev/general');
+const socket = io("http://localhost:4000/general");
+// const socket = io('casino-server.fly.dev/general');
 
 const SendBlazed = () => {
   const { connection } = useConnection();

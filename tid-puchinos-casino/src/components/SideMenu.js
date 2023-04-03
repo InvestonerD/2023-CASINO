@@ -16,7 +16,7 @@ import probably_fair from '../images/icons/probably-fair.svg'
 import information from '../images/icons/information.svg'
 import sponsorships from '../images/icons/sponsorships.svg'
 import live_support from '../images/icons/live-support.svg'
-import world from '../images/icons/world.svg'
+import world from '../images/icons/global.svg'
 
 export const SideMenu = () => {
 
@@ -185,7 +185,7 @@ export const SideMenu = () => {
 
                     <img src={world} alt="TID_logo" />
 
-                    <p className="animate__animated animate__fadeIn">Global</p>
+                    <p className="animate__animated animate__fadeIn">Language</p>
 
                 </div>
 

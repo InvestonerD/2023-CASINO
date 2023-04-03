@@ -9,8 +9,8 @@ import { SolletWalletAdapter } from '@solana/wallet-adapter-sollet';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 const WalletContextWrapper = ({ children }) => {
-  // const endpoint = 'https://flashy-blissful-emerald.solana-mainnet.discover.quiknode.pro/5fa5cacd9e4a581e727c0bc7fa844c452f0c30cb/';
-  const endpoint = 'https://autumn-thrilling-dream.solana-devnet.discover.quiknode.pro/cdc1d1130bd4e838ac4ec0128c74541afe233a61/';
+  const endpoint = 'https://flashy-blissful-emerald.solana-mainnet.discover.quiknode.pro/5fa5cacd9e4a581e727c0bc7fa844c452f0c30cb/';
+  // const endpoint = 'https://autumn-thrilling-dream.solana-devnet.discover.quiknode.pro/cdc1d1130bd4e838ac4ec0128c74541afe233a61/';
   const wallets = [
     new PhantomWalletAdapter(),
     new SolflareWalletAdapter(),

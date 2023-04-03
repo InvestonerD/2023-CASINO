@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SideMenu } from "../components/SideMenu.js";
 import { Navbar } from "../components/Navbar.js";
 import { Footer } from "../components/Footer.js";
@@ -7,109 +7,54 @@ import { toast } from "react-toastify";
 import "animate.css";
 import "../styles/coinflip.css";
 
-import headsImg from "../images/design/HEADS-CF.png";
-import blazeImg from "../images/design/BLAZED-CF.png";
-import sol from '../images/design/sol.png'
+import head from '../images/design/HEADS-CF.png';
+import tails from '../images/design/BLAZED-CF.png';
 
 function Coinflip() {
-    const [result, setResult] = useState(null);
-    const [isFlipping, setIsFlipping] = useState(false);
 
-    const flipCoin = () => {
-        if (isFlipping) return;
-        setIsFlipping(true);
-        const randomNumber = Math.floor(Math.random() * 2);
-        const result = randomNumber === 0 ? "HEADS" : "BLAZED";
-        setTimeout(() => {
-            setIsFlipping(false);
-            setResult(result);
-            const coinImage = document.querySelector(".coin-image");
-            coinImage.classList.remove("flip");
-            coinImage.style.animation = "flip-coin .2s linear infinite";
-            setTimeout(() => {
-                coinImage.classList.add("flip");
-                coinImage.style.animation = "none";
-                toast(`Coin side is ${result}`, { type: "info" });
-            }, 500);
-        }, 500);
-    };
+  const [winner, setWinner] = useState("");
 
-    return (
-        <div className="App">
+  const flipCoin = () => {
+    const random = Math.floor(Math.random() * 2);
+    const coin = document.getElementById("coin");
 
-            <title>TID Coin Flip</title>
+    if (random === 0) {
+      coin.classList.add("heads");
+      setWinner("heads");
+    } else {
+      coin.classList.add("tails");
+      setWinner("tails");
+    }
+  };
 
-            <SideMenu />
+  useEffect(() => {
+    if (winner !== "") {
+      toast.success("The winner is " + winner + "!");
+    }
+  }, [winner]);
 
-            <div className="coinflip-container">
-
-                <Navbar />
-
-                <div className="coinflip-content">
-
-                    <div className="coinflip-content-area">
-
-                        <div className="coin-display">
-
-                            <img className={isFlipping ? "coin-image rotate" : "coin-image"} src={result === "HEADS" ? headsImg : blazeImg} alt={result === "HEADS" ? "HEADS" : "BLAZED"} />
-
-                        </div>
-
-                        <div className="bet-container">
-
-                            <div className="bet-input-area">
-
-                                <div className="bet-title">
-
-                                    <h1>Amount</h1>
-
-                                </div>
-
-                                <div className="bet-input-amount">
-
-                                    <div className="left-side-inputs">
-
-                                            <img src={sol} alt="sol" />
-
-                                            <input type="number" placeholder="0.00" id="crash-amount" />
-
-                                    </div>
-
-                                    <div className="right-side-inputs">
-
-                                            <button className="mini-button">/2</button>
-
-                                            <button className="mini-button">x2</button>
-
-                                            <button className="mini-button">Max</button>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div className="bet-button-area">
-
-                                <button className="flip-button" onClick={flipCoin} >Flip Coin</button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <Footer />
-
+  return (
+    <div className="App">
+      <title>TID Coin Flip</title>
+      <SideMenu />
+      <div className="coinflip-container">
+        <Navbar />
+        <div className="coinflip-content">
+          <div className="coinflip-content-area">
+            <div className="coin-display">
+              <div className="coin" id="coin">
+                <img src={head} alt="heads" className="side-a" />
+                <img src={tails} alt="tails" className="side-b" />
+              </div>
             </div>
-
-            <SideChat />
-
+          </div>
+          <button className="coinflip-button" id="coinflip-button" onClick={flipCoin}>Flip</button>
         </div>
-
-    );
+        <Footer />
+      </div>
+      <SideChat />
+    </div>
+  );
 }
 
 export default Coinflip;
