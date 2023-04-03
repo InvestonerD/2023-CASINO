@@ -1,0 +1,12 @@
+{
+    "name": "tid-casino",
+    "scripts": {
+      "build": "npm install --legacy-peer-deps && npm run build"
+    },
+    "env": {
+      "NODE_ENV": {
+        "required": true
+      }
+    }
+  }
+  
