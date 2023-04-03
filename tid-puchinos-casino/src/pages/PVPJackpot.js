@@ -18,8 +18,8 @@ import Confetti from 'react-confetti'
 import { toast } from 'react-toastify';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:4000/pvp-jackpot');
-// const socket = io('casino-server.fly.dev/pvp-jackpot');
+// const socket = io('http://localhost:4000/pvp-jackpot');
+const socket = io('casino-server.fly.dev/pvp-jackpot');
 function PVPJackpot() {
 
 
