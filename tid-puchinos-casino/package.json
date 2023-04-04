@@ -50,6 +50,9 @@
     "socket.io-client": "^4.6.1",
     "web-vitals": "^2.1.4"
   },
+  "resolutions": {
+    "react": "18.2.0"
+  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",

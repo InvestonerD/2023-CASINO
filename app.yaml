@@ -1,5 +1,0 @@
-services:
-- name: tid-casino
-  environment_slug: node-js
-  build_command: npm install --legacy-peer-deps && npm run build
-  run_command: npm start
